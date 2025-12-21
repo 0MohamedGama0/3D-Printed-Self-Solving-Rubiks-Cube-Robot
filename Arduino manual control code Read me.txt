@@ -1,0 +1,82 @@
+# Rubik's Cube Robot - Manual Motor Control
+
+[![Arduino](https://img.shields.io/badge/Arduino-Compatible-green.svg)](https://www.arduino.cc/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Simple Arduino-based manual control system for testing and calibrating a 3D-printed Rubik's Cube solving robot. This firmware allows precise control of four stepper motors using serial commands.
+
+## 🎯 Quick Overview
+
+This code provides **manual control** over the Rubik's Cube robot motors via Serial Monitor. Perfect for:
+- ✅ Motor calibration and testing
+- ✅ Mechanical debugging
+- ✅ Learning motor mappings
+- ✅ Troubleshooting hardware issues
+
+## 📋 Requirements
+
+### Hardware Requirements
+| Component | Quantity | Purpose |
+|-----------|----------|---------|
+| **Arduino Mega 2560** | 1 | Main controller |
+| **28BYJ-48 Stepper Motors** | 4 | Cube face rotation |
+| **ULN2003 Driver Boards** | 4 | Motor drivers |
+| **5V 2A Power Supply** | 1 | External power for motors |
+| **Jumper Wires** | As needed | Motor connections |
+| **Standard Rubik's Cube** | 1 | Test subject |
+
+### Pin Connections Table
+| Motor | Driver Pins → Arduino Pins |
+|-------|----------------------------|
+| **Left (L)** | IN1-4 → 8, 10, 9, 11 |
+| **Back (B)** | IN1-4 → 7, 5, 6, 4 |
+| **Right (R)** | IN1-4 → 22, 26, 24, 28 |
+| **Down (D)** | IN1-4 → 34, 38, 36, 40 |
+
+### Software Requirements
+- **Arduino IDE 2.0+** ([Download](https://www.arduino.cc/en/software))
+- **Stepper Library** (Included with Arduino IDE)
+
+## ⚡ Quick Start
+
+1. **Connect Hardware**
+   - Wire motors according to pin table above
+   - Connect external 5V power supply to driver boards
+   - Connect Arduino to computer via USB
+
+2. **Upload Code**
+   ```bash
+   # Open Arduino IDE
+   # Select Board: Arduino Mega 2560
+   # Select Port: COMx (Windows) or /dev/ttyUSBx (Linux/Mac)
+   # Click Upload
+
+
+
+commands Control
+
+L+
+L-
+R+
+R-
+B+
+B-
+D+
+D-
+
+
+Where:
+
++ → rotate +90°
+
+- → rotate −90°
+
+
+Common Mechanical Checks
+
+Before moving forward to solving algorithms, verify:
+
+✔ Each motor rotates exactly 90°
+✔ Direction matches cube notation
+✔ No slipping on cube faces
+✔ Motors don’t stall or skip steps

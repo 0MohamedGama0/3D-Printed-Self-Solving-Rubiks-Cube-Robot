@@ -1,0 +1,51 @@
+#include <Stepper.h>
+
+#define STEPS_PER_REV 2048     // 28BYJ-48 motor
+#define DEG_90_STEPS (STEPS_PER_REV / 4)  // 512 steps
+
+// ---- Motors ----
+Stepper motorL(STEPS_PER_REV, 8, 10, 9, 11);     // Left
+Stepper motorB(STEPS_PER_REV, 7, 5, 6, 4);       // Back
+Stepper motorR(STEPS_PER_REV, 22, 26, 24, 28);   // Right
+Stepper motorD(STEPS_PER_REV, 34, 38, 36, 40);   // Down
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Rubik's Cube Manual Motor Control Ready");
+  Serial.println("Commands: L+/L-  R+/R-  B+/B-  D+/D-");
+
+  motorL.setSpeed(10);
+  motorB.setSpeed(10);
+  motorR.setSpeed(10);
+  motorD.setSpeed(10);
+}
+
+void rotate90(Stepper &motor, int direction) {
+  motor.step(direction * DEG_90_STEPS);
+}
+
+void loop() {
+  if (Serial.available() >= 2) {
+
+    char face = Serial.read();     // L, R, B, D
+    char dir  = Serial.read();     // + or -
+
+    // flush newline or extra characters
+    while (Serial.available()) Serial.read();
+
+    int direction = (dir == '+') ? 1 : -1;
+
+    switch (face) {
+      case 'L': rotate90(motorL, direction); break;
+      case 'R': rotate90(motorR, direction); break;
+      case 'B': rotate90(motorB, direction); break;
+      case 'D': rotate90(motorD, direction); break;
+      default:
+        Serial.println("Invalid command");
+        return;
+    }
+
+    Serial.print(face);
+    Serial.println(dir);
+  }
+}
