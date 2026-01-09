@@ -1,6 +1,6 @@
 # 🧩 3D Printed Self-Solving Rubik's Cube Robot
 
-A low-cost, educational robotic platform for studying physical reasoning through Rubik's Cube manipulation. This project combines **3D printing, embedded systems, and machine learning** to create a scientific instrument for learning action-consequence models.
+A low-cost, educational robotic platform for studying physical reasoning through Rubik's Cube manipulation. This project combines **3D printing, embedded systems, and machine learning** to create a scientific instrument for learning action-consequence models with a custom design model.
 
 ## 🎯 Key Features
 
