@@ -39,3 +39,6 @@ pip install -r requirements.txt
 # Install Arduino libraries (via Arduino IDE)
 # - AccelStepper
 # - Serial
+
+<img width="603" height="748" alt="Figure 5" src="https://github.com/user-attachments/assets/225025c3-e39f-4796-b6c6-0fe4daca2965" />
+
